@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<!-- Load d3.js. -->
+<script src="https://d3js.org/d3.v6.js"></script>
+
+<!-- Create a div where the graph will live -->
+<div id="chart"></div>
+
+<script>
+// Set the dimensions and margins of the graph
+const margin = {top: 10, right: 30, bottom: 30, left:60},
+    width = 1000 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+
+const svg = d3.select("#chart")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+const parseDate = d3.timeParse("%m/%d/%Y");
+
+// Read in the data
+d3.csv("HistoricalData_1677955006672.csv", function(d){
+    return {
+        date: parseDate(d['Date']),
+        percentChange: Math.abs((+d['Close/Last'] - +d['Open']) / +d['Open'] * 100),
+        volume: +d['Volume'],
+        open: d['Open'],
+        high: d['High'],
+        low: d['Low']
+    }
+}).then(function(data){
+    data.reverse()
+
+    // Calculate the duration of the transition for each bar
+    const totalDuration = 120000; // 2 minutes in milliseconds
+    const barDuration = totalDuration / data.length;
+
+    function updateChart(visibleData) {
+        // Clear the SVG
+        svg.selectAll('*').remove();
+
+        // Add X Scale
+        const x = d3.scaleBand()
+                    .domain(visibleData.map(d => d.date))
+                    .range([0, width])
+                    .padding(0.2);
+
+        // Add Y Scale
+        const y = d3.scaleLinear()
+                    .domain([0, d3.max(visibleData, d => d.percentChange)])
+                    .range([height, 0]);
+
+        // Add axes
+        svg.append("g")
+            .attr("transform", `translate(0, ${height})`)
+            .call(d3.axisBottom(x).tickValues(visibleData.filter((d => d.date.getDate() <=3 && d.date.getMonth() === 1)).map(d => d.date)).tickFormat(d3.timeFormat("%Y")));
+
+        svg.append("g")
+            .call(d3.axisLeft(y));
+
+        // Add bars with transition
+        svg.append('g')
+            .selectAll("dot")
+            .data(visibleData)
+            .join("rect")
+                .attr("x", function(d) { return x(d.date);})
+                .attr("y", function(d) { return y(d.percentChange)})
+                .attr("width", x.bandwidth())
+                .attr("height", function(d) {return height - y(d.percentChange)})
+                .attr("fill", "rebeccapurple");
+    }
+
+    // Animate chart by displaying bars one by one
+    for (let i = 1; i <= data.length; i++) {
+        setTimeout(() => {
+            if(i - 100 < 0){
+                x = 0
+            }
+            else{
+                x = i - 100
+            }
+            updateChart(data.slice(x, i));
+        }, i * barDuration);
+    }
+
+})
+</script>
