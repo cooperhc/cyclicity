@@ -23,7 +23,7 @@ const svg = d3.select("#chart")
 const parseDate = d3.timeParse("%Y-%m-%d");
 
 // Read in the data
-d3.csv("SPX.csv", function(d){
+d3.csv("SPXeveryotherday.csv", function(d){
     return {
         date: parseDate(d['date']),
         close: +d['close']
@@ -31,10 +31,10 @@ d3.csv("SPX.csv", function(d){
 }).then(function(data){
 
     // Calculate the duration of the transition for each bar
-    const totalDuration = 120000; // 2 minutes in milliseconds
-    const skipDataPoints = 20; // Render every 5th data point
+    const totalDuration = 240000; // 60k ms = 1 minute
+    const skipDataPoints = 2; // Render every nth data point
     const barDuration = totalDuration / (data.length / skipDataPoints);
-    const barsShown = 1500; //Five years
+    const barsShown = 2000; //# of bars shown
 
     function updateChart(visibleData) {
         // Clear the SVG
@@ -62,21 +62,43 @@ d3.csv("SPX.csv", function(d){
                 }
                 return false;
             }).map(d => d.date)).tickFormat(d3.timeFormat("%Y")));
-
+        
         svg.append("g")
             .call(d3.axisLeft(y));
 
-        // Add bars with transition
+        // Add candlesticks
         svg.append('g')
-            .selectAll("dot")
+            .selectAll("rect")
             .data(visibleData)
             .join("rect")
-                .attr("x", function(d) { return x(d.date);})
-                .attr("y", function(d) { return y(d.close)})
+                .attr("x", function(d) { 
+                    return x(d.date);
+                })
+                .attr("y", function(d, i) {
+                    if (i === 0){
+                        return y(d.close);
+                    }
+                    return Math.min(y(d.close), y(visibleData[i-1].close));
+                })
                 .attr("width", x.bandwidth())
-                .attr("height", function(d) {return height - y(d.close)})
-                .attr("fill", "rebeccapurple");
-    }
+                .attr("height", function(d, i) {
+                    if (i === 0){
+                        return 0;
+                    }
+                    return Math.abs(y(d.close) - y(visibleData[i-1].close));
+                })
+                .attr("fill", function(d, i) {
+                    if (i === 0) {
+                        return "green";
+                    }
+                    if (d.close >= visibleData[i-1].close) {
+                            return "green";
+                    } 
+                    else {
+                            return "red";
+                    }
+                });
+            }
 
     // Animate chart by displaying bars one by one
     for (let i = 1; i <= data.length; i+=skipDataPoints) {

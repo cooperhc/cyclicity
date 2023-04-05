@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<!-- Load d3.js. -->
+<script src="https://d3js.org/d3.v6.js"></script>
+
+<!-- Create a div where the graph will live -->
+<div id="chart"></div>
+
+<script>
+// Set the dimensions and margins of the graph
+const margin = {top: 10, right: 30, bottom: 30, left:60},
+    width = 1000 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+
+const svg = d3.select("#chart")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+const parseDate = d3.timeParse("%Y-%m-%d");
+
+// Read in the data
+d3.csv("SPX.csv", function(d){
+    return {
+        date: parseDate(d['date']),
+        close: +d['close']
+    }
+}).then(function(data){
+
+    // Add X Scale
+    const x = d3.scaleBand()
+                .domain(data.map(d => d.date))
+                .range([0, width])
+                .padding(0.2);
+
+    // Add Y Scale
+    const y = d3.scaleLinear()
+                .domain([0, d3.max(data, d => d.close)])
+                .range([height, 0]);
+
+    // Add axes
+    let prevYear = null;
+    svg.append("g")
+        .attr("transform", `translate(0, ${height})`)
+        .call(d3.axisBottom(x).tickValues(data.filter(d => {
+            if (d.date.getMonth() === 1 && (prevYear === null || d.date.getFullYear() !== prevYear)) {
+                prevYear = d.date.getFullYear();
+                return true;
+            }
+            return false;
+        }).map(d => d.date)).tickFormat(d3.timeFormat("%Y")));
+
+    svg.append("g")
+        .call(d3.axisLeft(y));
+
+    // Add candlesticks
+    svg.append('g')
+        .selectAll("rect")
+        .data(data)
+        .join("rect")
+            .attr("x", function(d) { 
+                return x(d.date);
+            })
+            .attr("y", function(d, i) {
+                if (i === 0){
+                    return y(d.close);
+                }
+                return Math.min(y(d.close), y(data[i-1].close));
+            })
+            .attr("width", x.bandwidth())
+            .attr("height", function(d, i) {
+                if (i === 0){
+                    return 0;
+                }
+                return Math.abs(y(d.close) - y(data[i-1].close));
+            })
+            .attr("fill", function(d, i) {
+                if (i === 0) {
+                    return "green";
+                }
+                if (d.close >= data[i-1].close) {
+                        return "green";
+                } 
+                else {
+                        return "red";
+                }
+            });
+})
+</script>
