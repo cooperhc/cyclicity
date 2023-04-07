@@ -10,8 +10,8 @@
 <script>
 // Set the dimensions and margins of the graph
 const margin = {top: 10, right: 30, bottom: 30, left:60},
-    width = 1000 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+    width = 1500 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
 
 const svg = d3.select("#chart")
             .append("svg")
@@ -23,7 +23,7 @@ const svg = d3.select("#chart")
 const parseDate = d3.timeParse("%Y-%m-%d");
 
 // Read in the data
-d3.csv("SPXweekly.csv", function(d){
+d3.csv("UKXweekly.csv", function(d){
     return {
         date: parseDate(d['date']),
         close: +d['close']
@@ -47,9 +47,10 @@ d3.csv("SPXweekly.csv", function(d){
                     .padding(0.2);
 
         // Add Y Scale
-        const y = d3.scaleLinear()
-                    .domain([0, d3.max(visibleData, d => d.close)])
-                    .range([height, 0]);
+        const y = d3.scaleLog()
+                    .domain([d3.min(visibleData, d => d.close) * .98, d3.max(visibleData, d => d.close)])
+                    .range([height, 0])
+                    .nice();
 
         // Add axes
         let prevYear = null;
@@ -64,7 +65,7 @@ d3.csv("SPXweekly.csv", function(d){
             }).map(d => d.date)).tickFormat(d3.timeFormat("%Y")));
         
         svg.append("g")
-            .call(d3.axisLeft(y));
+            .call(d3.axisLeft(y).tickFormat(d3.format(",.0f")));
 
         // Add candlesticks
         svg.append('g')

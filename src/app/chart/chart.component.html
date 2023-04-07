@@ -1,5 +1,22 @@
-<body>
-<iframe src="assets/spx1.html" width="100%" height="400" frameborder="0"></iframe>
-<h3>United States Stock Market (SPX)</h3>
-<iframe src="assets/spx2.html" width="100%" height="400" frameborder="0"></iframe>
-</body>
+<ng-container *ngIf="usa">
+    <body>
+      <iframe src="assets/SPX/spx1.html" width="100%" height="400" frameborder="0"></iframe>
+      <h3>United States Stock Market (SPX)</h3>
+      <iframe src="assets/SPX/spx2.html" width="100%" height="400" frameborder="0"></iframe>
+    </body>
+  </ng-container>
+  <ng-container *ngIf="uk">
+    <body>
+      <iframe src="assets/UKX/ukx1.html" width="100%" height="400" frameborder="0"></iframe>
+      <h3>United Kingdom Stock Market (UKX)</h3>
+      <iframe src="assets/UKX/ukx2.html" width="100%" height="400" frameborder="0"></iframe>
+    </body>
+  </ng-container>
+  <ng-container *ngIf="shc">
+    <body>
+      <iframe src="assets/SHC/shc1.html" width="100%" height="400" frameborder="0"></iframe>
+      <h3>China Stock Market (SHC)</h3>
+      <iframe src="assets/SHC/shc2.html" width="100%" height="400" frameborder="0"></iframe>
+    </body>
+  </ng-container>
+  
