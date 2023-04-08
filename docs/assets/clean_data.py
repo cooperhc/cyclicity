@@ -21,11 +21,11 @@ def clean_data(input_file, output_file):
                 
                 close = float(close)
                 
-                if close <= 40000:
+                if close <= 100000:
                     writer.writerow([date, close])
                 
-            keep_line = not keep_line
+            #keep_line = not keep_line
 
-input_file = 'MOEX.csv'
-output_file = 'MOEX_clean.csv'
+input_file = 'BTC.csv'
+output_file = 'BTC_clean.csv'
 clean_data(input_file, output_file)
