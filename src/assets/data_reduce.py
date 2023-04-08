@@ -1,7 +1,7 @@
 import csv
 
-input_file = 'NKX_clean.csv'
-output_file = 'NKX_clean2.csv'
+input_file = 'BTCweekly2.csv'
+output_file = 'BTCweekly3.csv'
 
 with open(input_file, 'r') as csv_input_file, open(output_file, 'w', newline='') as csv_output_file:
     # create CSV reader and writer objects
