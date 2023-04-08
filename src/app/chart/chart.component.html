@@ -1,22 +1,35 @@
-<ng-container *ngIf="usa">
+<html>
     <body>
-      <iframe src="assets/SPX/spx1.html" width="100%" height="400" frameborder="0"></iframe>
-      <h3>United States Stock Market (SPX)</h3>
-      <iframe src="assets/SPX/spx2.html" width="100%" height="400" frameborder="0"></iframe>
-    </body>
-  </ng-container>
-  <ng-container *ngIf="uk">
-    <body>
-      <iframe src="assets/UKX/ukx1.html" width="100%" height="400" frameborder="0"></iframe>
-      <h3>United Kingdom Stock Market (UKX)</h3>
-      <iframe src="assets/UKX/ukx2.html" width="100%" height="400" frameborder="0"></iframe>
-    </body>
-  </ng-container>
-  <ng-container *ngIf="shc">
-    <body>
-      <iframe src="assets/SHC/shc1.html" width="100%" height="400" frameborder="0"></iframe>
-      <h3>China Stock Market (SHC)</h3>
-      <iframe src="assets/SHC/shc2.html" width="100%" height="400" frameborder="0"></iframe>
-    </body>
-  </ng-container>
-  
+        <a href="/"><h1>Cyclicity</h1></a>
+        <ng-container *ngIf="usa">
+            <iframe src="assets/SPX/spx1.html" width="100%" height="400" frameborder="0"></iframe>
+            <h3>United States Stock Market (SPX)</h3>
+            <iframe src="assets/SPX/spx2.html" width="100%" height="400" frameborder="0"></iframe>
+          </ng-container>
+        <ng-container *ngIf="uk">
+            <iframe src="assets/UKX/ukx1.html" width="100%" height="400" frameborder="0"></iframe>
+            <h3>United Kingdom Stock Market (UKX)</h3>
+            <iframe src="assets/UKX/ukx2.html" width="100%" height="400" frameborder="0"></iframe>
+          </ng-container>
+        <ng-container *ngIf="shc">
+            <iframe src="assets/SHC/shc1.html" width="100%" height="400" frameborder="0"></iframe>
+            <h3>China Stock Market (SHC)</h3>
+            <iframe src="assets/SHC/shc2.html" width="100%" height="400" frameborder="0"></iframe>
+        </ng-container>
+        <ng-container *ngIf="dax">
+            <iframe src="assets/DAX/dax1.html" width="100%" height="400" frameborder="0"></iframe>
+            <h3>Germany Stock Market (DAX)</h3>
+            <iframe src="assets/DAX/dax2.html" width="100%" height="400" frameborder="0"></iframe>
+        </ng-container>
+        <ng-container *ngIf="moex">
+            <iframe src="assets/MOEX/moex1.html" width="100%" height="400" frameborder="0"></iframe>
+            <h3>Russia Stock Market (MOEX)</h3>
+            <iframe src="assets/MOEX/moex2.html" width="100%" height="400" frameborder="0"></iframe>
+        </ng-container>
+        <ng-container *ngIf="nkx">
+            <iframe src="assets/NKX/nkx1.html" width="100%" height="400" frameborder="0"></iframe>
+            <h3>Japan Stock Market (NKX)</h3>
+            <iframe src="assets/NKX/nkx2.html" width="100%" height="400" frameborder="0"></iframe>
+        </ng-container>
+        </body>        
+</html>

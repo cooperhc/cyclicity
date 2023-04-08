@@ -1,11 +1,16 @@
-<h3>cyclicity</h3>
-<p>National indexes</p>
-<div>
-    <button [routerLink]="['chart/1']">USA</button>
-</div>
-<div>
-    <button [routerLink]="['chart/2']">UK</button>
-</div>
-<div>
-    <button [routerLink]="['chart/3']">China</button>
-</div>
+<html>
+    <body>
+        <h1>Cyclicity</h1>
+        <p class="description">Cyclicity provides perspectives into long-term market trends as well as the cyclic nature of national stock indexes and assets broadly.</p>
+        <h2 class="subheader">National Indexes</h2>
+        <div class="button-container">
+            <button [routerLink]="['chart/1']">USA</button>
+            <button [routerLink]="['chart/3']">China</button>
+            <button [routerLink]="['chart/4']">Japan</button>
+            <button [routerLink]="['chart/5']">Germany</button>
+            <button [routerLink]="['chart/2']">UK</button>
+            <button [routerLink]="['chart/6']">Russia</button>
+        </div>
+        <h2 class="subheader">Popular Assets</h2>
+    </body>
+</html>
