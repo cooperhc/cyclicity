@@ -21,11 +21,10 @@ def clean_data(input_file, output_file):
                 
                 close = float(close)
                 
-                if close <= 100000:
+                if close <= 10000:
                     writer.writerow([date, close])
                 
-            #keep_line = not keep_line
 
-input_file = 'BTC.csv'
-output_file = 'BTC_clean.csv'
+input_file = 'tsla.csv'
+output_file = 'tsla_clean.csv'
 clean_data(input_file, output_file)

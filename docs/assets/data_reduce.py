@@ -1,7 +1,7 @@
 import csv
 
-input_file = 'BTCweekly2.csv'
-output_file = 'BTCweekly3.csv'
+input_file = 'tsla_clean.csv'
+output_file = 'tsla_weekly.csv'
 
 with open(input_file, 'r') as csv_input_file, open(output_file, 'w', newline='') as csv_output_file:
     # create CSV reader and writer objects
@@ -9,5 +9,5 @@ with open(input_file, 'r') as csv_input_file, open(output_file, 'w', newline='')
     writer = csv.writer(csv_output_file)
 
     for i, row in enumerate(reader):
-        if i % 3 != 0: 
+        if i % 4 == 0: 
             writer.writerow(row)
