@@ -36,5 +36,20 @@
             <h3>Bitcoin Price Chart (BTCUSD)</h3>
             <iframe src="assets/BTC/btc2.html" width="100%" height="400" frameborder="0"></iframe>
         </ng-container>
+        <ng-container *ngIf="eth">
+            <iframe src="assets/ETH/eth1.html" width="100%" height="400" frameborder="0"></iframe>
+            <h3>Ethereum Price Chart (ETHUSD)</h3>
+            <iframe src="assets/ETH/eth2.html" width="100%" height="400" frameborder="0"></iframe>
+        </ng-container>
+        <ng-container *ngIf="tsla">
+            <iframe src="assets/TSLA/tsla1.html" width="100%" height="400" frameborder="0"></iframe>
+            <h3>Tesla Price Chart (TSLA)</h3>
+            <iframe src="assets/TSLA/tsla2.html" width="100%" height="400" frameborder="0"></iframe>
+        </ng-container>
+        <ng-container *ngIf="aapl">
+            <iframe src="assets/AAPL/aapl1.html" width="100%" height="400" frameborder="0"></iframe>
+            <h3>Apple Price Chart (AAPL)</h3>
+            <iframe src="assets/AAPL/aapl2.html" width="100%" height="400" frameborder="0"></iframe>
+        </ng-container>
         </body>        
 </html>

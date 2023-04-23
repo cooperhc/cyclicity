@@ -17,6 +17,9 @@ export class ChartComponent implements OnInit{
   nkx = false
   moex = false
   btc = false
+  eth = false
+  tsla = false
+  aapl = false
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id') as string
@@ -40,6 +43,15 @@ export class ChartComponent implements OnInit{
     }
     else if(this.id=="7"){
       this.btc = true
+    }
+    else if(this.id=="8"){
+      this.eth = true
+    }
+    else if(this.id=="9"){
+      this.tsla = true
+    }
+    else if(this.id=="10"){
+      this.aapl = true
     }
     console.log(this.usa)
     console.log(this.id)
