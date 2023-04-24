@@ -1,7 +1,7 @@
 import csv
 
-input_file = 'tsla_clean.csv'
-output_file = 'tsla_weekly.csv'
+input_file = 'nvda_clean.csv'
+output_file = 'nvda_weekly.csv'
 
 with open(input_file, 'r') as csv_input_file, open(output_file, 'w', newline='') as csv_output_file:
     # create CSV reader and writer objects
