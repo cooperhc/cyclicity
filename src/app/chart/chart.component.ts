@@ -20,6 +20,13 @@ export class ChartComponent implements OnInit{
   eth = false
   tsla = false
   aapl = false
+  amd = false
+  googl = false
+  amzn = false
+  meta = false
+  msft = false
+  nflx = false
+  nvda = false
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id') as string
@@ -42,16 +49,37 @@ export class ChartComponent implements OnInit{
       this.moex = true
     }
     else if(this.id=="7"){
-      this.btc = true
+      this.amzn = true
     }
     else if(this.id=="8"){
-      this.eth = true
+      this.amd = true
     }
     else if(this.id=="9"){
-      this.tsla = true
+      this.aapl = true
     }
     else if(this.id=="10"){
-      this.aapl = true
+      this.googl = true
+    }
+    else if(this.id=="11"){
+      this.meta = true
+    }
+    else if(this.id=="12"){
+      this.msft = true
+    }
+    else if(this.id=="13"){
+      this.nflx = true
+    }
+    else if(this.id=="14"){
+      this.nvda = true
+    }
+    else if(this.id=="15"){
+      this.tsla = true
+    }
+    else if(this.id=="16"){
+      this.btc = true
+    }
+    else if(this.id=="17"){
+      this.eth = true
     }
     console.log(this.usa)
     console.log(this.id)

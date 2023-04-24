@@ -21,10 +21,10 @@ def clean_data(input_file, output_file):
                 
                 close = float(close)
                 
-                if close <= 10000:
+                if close <= 5000:
                     writer.writerow([date, close])
                 
 
-input_file = 'tsla.csv'
-output_file = 'tsla_clean.csv'
+input_file = 'nvda.csv'
+output_file = 'nvda_clean.csv'
 clean_data(input_file, output_file)
