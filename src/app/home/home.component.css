@@ -30,6 +30,15 @@ h1 {
     font-weight: 300;
 }
 
+.subdesc {
+    text-align: center;
+    max-width: 40%;
+    margin-bottom: 20px;
+    font-size: medium;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+}
+
 .subheader {
     font-size: 36px;
     margin-bottom: 20px;
