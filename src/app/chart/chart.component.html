@@ -31,21 +31,8 @@
             <h3>Japan Stock Market (NKX)</h3>
             <iframe src="assets/NKX/nkx2.html" width="100%" height="400" frameborder="0"></iframe>
         </ng-container>
-        <ng-container *ngIf="btc">
-            <iframe src="assets/BTC/btc1.html" width="100%" height="400" frameborder="0"></iframe>
-            <h3>Bitcoin Price Chart (BTCUSD)</h3>
-            <iframe src="assets/BTC/btc2.html" width="100%" height="400" frameborder="0"></iframe>
-        </ng-container>
-        <ng-container *ngIf="eth">
-            <iframe src="assets/ETH/eth1.html" width="100%" height="400" frameborder="0"></iframe>
-            <h3>Ethereum Price Chart (ETHUSD)</h3>
-            <iframe src="assets/ETH/eth2.html" width="100%" height="400" frameborder="0"></iframe>
-        </ng-container>
-        <ng-container *ngIf="tsla">
-            <iframe src="assets/TSLA/tsla1.html" width="100%" height="400" frameborder="0"></iframe>
-            <h3>Tesla Price Chart (TSLA)</h3>
-            <iframe src="assets/TSLA/tsla2.html" width="100%" height="400" frameborder="0"></iframe>
-        </ng-container>
+        
+        
         <ng-container *ngIf="aapl">
             <iframe src="assets/AAPL/aapl1.html" width="100%" height="400" frameborder="0"></iframe>
             <h3>Apple Price Chart (AAPL)</h3>
@@ -86,5 +73,31 @@
             <h3>Nvidia Price Chart (NVDA)</h3>
             <iframe src="assets/NVDA/nvda2.html" width="100%" height="400" frameborder="0"></iframe>
         </ng-container>
+        <ng-container *ngIf="tsla">
+            <iframe src="assets/TSLA/tsla1.html" width="100%" height="400" frameborder="0"></iframe>
+            <h3>Tesla Price Chart (TSLA)</h3>
+            <iframe src="assets/TSLA/tsla2.html" width="100%" height="400" frameborder="0"></iframe>
+        </ng-container>
+        <ng-container *ngIf="btc">
+            <iframe src="assets/BTC/btc1.html" width="100%" height="400" frameborder="0"></iframe>
+            <h3>Bitcoin Price Chart (BTCUSD)</h3>
+            <iframe src="assets/BTC/btc2.html" width="100%" height="400" frameborder="0"></iframe>
+        </ng-container>
+        <ng-container *ngIf="eth">
+            <iframe src="assets/ETH/eth1.html" width="100%" height="400" frameborder="0"></iframe>
+            <h3>Ethereum Price Chart (ETHUSD)</h3>
+            <iframe src="assets/ETH/eth2.html" width="100%" height="400" frameborder="0"></iframe>
+        </ng-container>
+        <ng-container *ngIf="assets">
+            <iframe src="assets/assets.html" width="100%" height="400" frameborder="0"></iframe>
+            <h3>Asset Appreciation Since Inception</h3>
+        </ng-container>
+
+        <script>
+            window.onload = function() {
+                window.scrollTo(0, 0);
+            }
+        </script>
+
         </body>        
 </html>

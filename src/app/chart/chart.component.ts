@@ -27,6 +27,8 @@ export class ChartComponent implements OnInit{
   msft = false
   nflx = false
   nvda = false
+  assets = false
+  load = true
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id') as string
@@ -81,10 +83,9 @@ export class ChartComponent implements OnInit{
     else if(this.id=="17"){
       this.eth = true
     }
-    console.log(this.usa)
-    console.log(this.id)
-    console.log(this.id==="1")
-    
+    else if(this.id=="18"){
+      this.assets = true
+    }    
   }
 
   constructor(private route:ActivatedRoute){}

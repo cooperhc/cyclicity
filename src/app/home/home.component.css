@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
 body {
     background-color: #111;
     min-height: 100vh;
@@ -8,24 +11,29 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: #fff;
 }
 
 h1 {
     font-size: 48px;
     margin-bottom: 20px;
+    font-weight: 700;
 }
 
 .description {
     text-align: center;
-    max-width: 80%;
-    margin-bottom: 50px;
+    max-width: 40%;
+    margin-bottom: 20px;
+    font-size: x-large;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
 }
 
 .subheader {
     font-size: 36px;
     margin-bottom: 20px;
+    font-weight: 700;
 }
 
 .button-container {
@@ -36,7 +44,7 @@ h1 {
 }
 
 button {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-color: #333;
     color: #fff;
     border: none;
@@ -45,8 +53,9 @@ button {
     cursor: pointer;
     transition: background-color 0.3s;
     margin-bottom: 10px;
-    width: 150px;
+    width: 200px;
     font-size: large;
+    font-weight: 400;
 }
 
 button:hover {

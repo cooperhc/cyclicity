@@ -1,9 +1,10 @@
 body{
     background-color: #111;
-    height: 1600px;
+    height: 1300px;
     width: 100vw;
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 h3, h1{

@@ -103,11 +103,9 @@ d3.csv("aapl_clean.csv", function(d){
     // Animate chart by displaying bars one by one
     for (let i = 1; i <= data.length; i+=skipDataPoints) {
         setTimeout(() => {
-
             const sliceStart = Math.max(0, i - barsShown);
             updateChart(data.slice(sliceStart, i));
         }, (i / skipDataPoints) * barDuration);
     }
-
 })
 </script>
