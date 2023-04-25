@@ -8,11 +8,15 @@ body{
     overflow: hidden;
 }
 
-h3, h1{
+h4, h3, h1{
     text-align: center;
     font-family: 'Roboto', Arial, sans-serif;
     color: #fff;
     
+}
+
+h4{
+    padding-top: 10px;
 }
 
 h1 {
@@ -43,3 +47,12 @@ html {
     padding: 0;
 }
   
+
+p {
+    text-align: center;
+    max-width: 40%;
+    margin-bottom: 20px;
+    font-size: medium;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+}
