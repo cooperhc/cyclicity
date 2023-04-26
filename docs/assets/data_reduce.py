@@ -1,7 +1,7 @@
 import csv
 
-input_file = 'nvda_clean.csv'
-output_file = 'nvda_weekly.csv'
+input_file = 'nvda_clean2.csv'
+output_file = 'nvda_clean3.csv'
 
 with open(input_file, 'r') as csv_input_file, open(output_file, 'w', newline='') as csv_output_file:
     # create CSV reader and writer objects
@@ -9,5 +9,5 @@ with open(input_file, 'r') as csv_input_file, open(output_file, 'w', newline='')
     writer = csv.writer(csv_output_file)
 
     for i, row in enumerate(reader):
-        if i % 4 == 0: 
+        if i % 3 != 0: 
             writer.writerow(row)
