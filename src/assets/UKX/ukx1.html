@@ -23,7 +23,7 @@ const svg = d3.select("#chart")
 const parseDate = d3.timeParse("%Y-%m-%d");
 
 // Read in the data
-d3.csv("UKXeveryotherday.csv", function(d){
+d3.csv("UKX_clean.csv", function(d){
     return {
         date: parseDate(d['date']),
         close: +d['close']
