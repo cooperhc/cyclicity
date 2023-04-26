@@ -86,6 +86,8 @@ export class ChartComponent implements OnInit{
     else if(this.id=="18"){
       this.assets = true
     }    
+    window.scrollTo(0, 0);
+    
   }
 
   constructor(private route:ActivatedRoute){}
