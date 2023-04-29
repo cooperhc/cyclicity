@@ -33,8 +33,6 @@ d3.csv("nvda_weekly.csv", function(d){
     const totalDuration = 240000; // 60k ms = 1 minute
     const skipDataPoints = 5; // Render every nth data point
     const barDuration = totalDuration / (data.length / skipDataPoints);
-    const barsShown = 1000; //# of bars shown
-
 
     function updateChart(visibleData, spliceIndex) {
         // Clear the SVG

@@ -34,7 +34,7 @@ d3.csv("SHC_clean.csv", function(d){
     const totalDuration = 240000; // 60k ms = 1 minute
     const skipDataPoints = 2; // Render every nth data point
     const barDuration = totalDuration / (data.length / skipDataPoints);
-    const barsShown = 2000; //# of bars shown
+    const barsShown = data.length * (1/3); //% of bars shown
 
     function updateChart(visibleData) {
         // Clear the SVG
